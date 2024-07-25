@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  database:
+    image: 'mysql:8.0'
+    container_name: 'databaseservice'
+    restart: 'always'
+    command: 'mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci'
+    ports:
+      - '3306:3306'
+    volumes:
+      - './dbdata:/var/lib/mysql'
+      - './sandbox.sql:/docker-entrypoint-initdb.dker'
+    environment:
+      - MYSQL_DATABASE=sandbox
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - app_network
+
+  backend:
+    container_name: 'laravel-backend-app'
+    build:
+      context: .
+    restart: always
+    ports:
+      - '80:80'
+    volumes:
+      - ./app:/var/www/html
+      - ./apache-config:/etc/apache2/sites-enabled
+    depends_on:
+      - database
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
