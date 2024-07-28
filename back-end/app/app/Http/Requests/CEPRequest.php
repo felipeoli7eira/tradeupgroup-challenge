@@ -6,19 +6,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CEPRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
-     */
     public function rules(): array
     {
         return [
@@ -29,9 +21,9 @@ class CEPRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'cep.required' => 'O Parãmetro CEP é obrigatório',
-            'cep.string'   => 'O Parãmetro CEP deve ser uma string numerica',
-            'cep.size'     => 'O Parãmetro CEP deve estar dentro dos padões estabelecidos',
+            'cep.required' => 'O Parâmetro CEP é obrigatório',
+            'cep.string'   => 'O Parâmetro CEP deve ser uma string numérica',
+            'cep.size'     => 'O Parâmetro CEP deve estar dentro dos padões estabelecidos',
         ];
     }
 }

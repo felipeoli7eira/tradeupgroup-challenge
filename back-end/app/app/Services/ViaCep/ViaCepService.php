@@ -13,12 +13,10 @@ abstract class ViaCepService
         {
             $request = Http::get(config('services.viacep.url') . "/$cep/json");
 
-            $response = $request->json();
-
             return [
                 'status'  => 'success',
                 'message' => 'Dados do CEP informado',
-                'data'    => $response
+                'data'    => $request->json()
             ];
         }
         catch (Throwable $throwable)

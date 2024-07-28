@@ -29,7 +29,7 @@ export default function useCep() {
           return
         }
 
-        cepResponse.value = cepInfo.data.data
+        cepResponse.value = cepInfo.data
     }
 
     return {
