@@ -1,6 +1,9 @@
 # VueMaps - TradeUp - Avaliação Técnica
 Teste de habilidades em back e frontend com integração na ViaCEP API.
 
+## aplicação:
+[vueceps.netlify.app](https://vueceps.netlify.app)
+
 ## Requisitos do teste:
 
 - Desenvolva uma SPA em VUE
@@ -77,7 +80,11 @@ A seguir, vou detalhar o frontend com os pontos que considero que atendem os req
     - Criei um service para requisições http com uma URL base de requisições, apontando para o backend laravel (ao invés de usar diretamente a instância do axios).
     - Criei um service para requisições unicamente de cep, para que toda a aplicação possa usar essa chamada simplesmente chamando a função ```getCep(...)```, ao invés de deixa-la engessada no componente e caso fosse necessário fazer isso em outros componentes, eu precisasse copiar e colar código
     - Criei um util de validação de CEP, também imaginando que posso usa-lo por toda a aplicação e não ficar acoplado em um único componente forçando duplicidade de código.
-    - Tratamento de erros: O app trata de maneira eficiente os erros que podem acontecer, como resposta de erro da api ou CEP inválido, dando alertas em toasts para o usuário.
+    - Tratamento de erros: O app trata de maneira eficiente os erros que podem acontecer, como resposta de erro da api ou CEP inválido, dando alertas em toasts para o usuário e exibindo uma mensagem de dados não encontrados para o CEP informado.
+
+![Organização das pastas](./docs/assets/img/notfound.jpg)
+
+
 - Planejamento
     - Antes de escrever a primeira linha de código eu já sabia que deveria organizar dessa maneira o projeto, para que ele já nascesse limpo e componentizado. Também já queria que fosse fácil ver e subir esse projeto, por isso o uso do docker, que pemite que com um comando eu suba todo o ambiente de desenvolvimento. Isso em um contexto de equipe facilita muito o desenvolvimento.
 
